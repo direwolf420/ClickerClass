@@ -14,13 +14,14 @@ namespace ClickerClass.UI
 		private float _clickerScale = 0f;
 		private float _clickerAlpha = 0f;
 		private static bool _lastMouseInterface = false;
+		private static bool _lastMouseText = false;
 
 		/// <summary>
 		/// Helper method that determines when the cursor can be drawn/replaced
 		/// </summary>
 		public static bool CanDrawCursor(Item item)
 		{
-			return !_lastMouseInterface && ClickerSystem.IsClickerWeapon(item);
+			return !_lastMouseInterface && !_lastMouseText && ClickerSystem.IsClickerWeapon(item);
 		}
 
 		public override void Update(GameTime gameTime)
@@ -30,7 +31,9 @@ namespace ClickerClass.UI
 			float flipped = 2 * 0.8f - Main.cursorAlpha;
 			_clickerAlpha = flipped * 0.3f + 0.7f;
 			// To safely cache when the cursor is inside an interface (directly accessing it when adding the cursor will not work because the vanilla logic hasn't reached that stage yet)
+
 			_lastMouseInterface = Main.LocalPlayer.mouseInterface;
+			_lastMouseText = Main.mouseText;
 		}
 
 		protected override bool DrawSelf()

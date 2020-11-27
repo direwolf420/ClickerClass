@@ -83,7 +83,7 @@ namespace ClickerClass.Prefixes
 		{
 			string name = prefixType.ToString();
 			mod.AddContent(new ClickerPrefix(name, displayName, damageMult, radiusBonus, clickBonus, critBonus));
-			if (mod.TryFind(name, out ClickerPrefix prefix))
+			if (mod.TryFind(name, out ModPrefix prefix))
 			{
 				ClickerPrefixes.Add(prefix.Type);
 			}
