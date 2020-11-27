@@ -1,5 +1,6 @@
 using ClickerClass.Effects;
 using ClickerClass.Items;
+using ClickerClass.Prefixes;
 using ClickerClass.UI;
 using Microsoft.Xna.Framework;
 using System;
@@ -27,6 +28,8 @@ namespace ClickerClass
 			AutoClickKey = RegisterHotKey("Clicker Accessory", "G");
 			ClickerSystem.Load();
 
+			ClickerPrefix.LoadPrefixes(mod);
+
 			if (!Main.dedServ)
 			{
 				LoadClient();
@@ -38,6 +41,7 @@ namespace ClickerClass
 			finalizedRegisterCompat = false;
 			ShaderManager.Unload();
 			ClickerSystem.Unload();
+			ClickerPrefix.UnloadPrefixes();
 			ClickerInterfaceResources.Unload();
 			AutoClickKey = null;
 			mod = null;

@@ -5,8 +5,11 @@ using Terraria.ModLoader;
 
 namespace ClickerClass.Prefixes
 {
+	[Autoload(false)]
 	public class ClickerPrefix : ModPrefix
 	{
+		public override string Name { get; }
+
 		internal static List<byte> ClickerPrefixes;
 		internal float damageMult = 1f;
 		internal float radiusBonus = 0;
@@ -18,8 +21,9 @@ namespace ClickerClass.Prefixes
 
 		public ClickerPrefix() { }
 
-		public ClickerPrefix(string displayName, float damageMult, float radiusBonus, int clickBonus, int critBonus)
+		public ClickerPrefix(string name, string displayName, float damageMult, float radiusBonus, int clickBonus, int critBonus)
 		{
+			Name = name ?? base.Name;
 			this.displayName = displayName;
 			this.damageMult = damageMult;
 			this.radiusBonus = radiusBonus;
@@ -30,21 +34,6 @@ namespace ClickerClass.Prefixes
 		public override void SetDefaults()
 		{
 			DisplayName.SetDefault(displayName);
-		}
-
-		public override bool Autoload(ref string name)
-		{
-			if (base.Autoload(ref name))
-			{
-				ClickerPrefixes = new List<byte>();
-				AddClickerPrefix(ClickerPrefixType.Elite, "Elite", 1.15f, 0.3f, -1, 2);
-				AddClickerPrefix(ClickerPrefixType.Pro, "Pro", 1.1f, 0.2f, 0, 2);
-				AddClickerPrefix(ClickerPrefixType.Amateur, "Amateur", 1f, 0.3f, -1, 0);
-				AddClickerPrefix(ClickerPrefixType.Novice, "Novice", 1f, 0.2f, 0, 0);
-				AddClickerPrefix(ClickerPrefixType.Laggy, "Laggy", 0.9f, -0.2f, 0, 0);
-				AddClickerPrefix(ClickerPrefixType.Disconnected, "Disconnected", 0.8f, -0.3f, 1, 0);
-			}
-			return false;
 		}
 
 		public override void Apply(Item item)
@@ -73,10 +62,31 @@ namespace ClickerClass.Prefixes
 			critBonus = this.critBonus;
 		}
 
-		private void AddClickerPrefix(ClickerPrefixType prefixType, string displayName, float damageMult = 1f, float radiusBonus = 0f, int clickBonus = 0, int critBonus = 0)
+		internal static void LoadPrefixes(Mod mod)
 		{
-			Mod.AddPrefix(prefixType.ToString(), new ClickerPrefix(displayName, damageMult, radiusBonus, clickBonus, critBonus));
-			ClickerPrefixes.Add(Mod.GetPrefix(prefixType.ToString()).Type);
+			ClickerPrefixes = new List<byte>();
+			AddClickerPrefix(mod, ClickerPrefixType.Elite, "Elite", 1.15f, 0.3f, -1, 2);
+			AddClickerPrefix(mod, ClickerPrefixType.Pro, "Pro", 1.1f, 0.2f, 0, 2);
+			AddClickerPrefix(mod, ClickerPrefixType.Amateur, "Amateur", 1f, 0.3f, -1, 0);
+			AddClickerPrefix(mod, ClickerPrefixType.Novice, "Novice", 1f, 0.2f, 0, 0);
+			AddClickerPrefix(mod, ClickerPrefixType.Laggy, "Laggy", 0.9f, -0.2f, 0, 0);
+			AddClickerPrefix(mod, ClickerPrefixType.Disconnected, "Disconnected", 0.8f, -0.3f, 1, 0);
+		}
+
+		internal static void UnloadPrefixes()
+		{
+			ClickerPrefixes?.Clear();
+			ClickerPrefixes = null;
+		}
+
+		internal static void AddClickerPrefix(Mod mod, ClickerPrefixType prefixType, string displayName, float damageMult = 1f, float radiusBonus = 0f, int clickBonus = 0, int critBonus = 0)
+		{
+			string name = prefixType.ToString();
+			mod.AddContent(new ClickerPrefix(name, displayName, damageMult, radiusBonus, clickBonus, critBonus));
+			if (mod.TryFind(name, out ClickerPrefix prefix))
+			{
+				ClickerPrefixes.Add(prefix.Type);
+			}
 		}
 	}
 
