@@ -1,6 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 
 namespace ClickerClass.Effects
@@ -109,25 +110,25 @@ namespace ClickerClass.Effects
 		public static void StartEffectOnSpriteBatch(SpriteBatch spriteBatch, Effect effect)
 		{
 			spriteBatch.End();
-			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.instance.Rasterizer, effect, Main.GameViewMatrix.TransformationMatrix);
+			spriteBatch.Begin(SpriteSortMode.Immediate, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, effect, Main.GameViewMatrix.TransformationMatrix);
 		}
 
 		public static void DrawEmptyCanvasToScreen(SpriteBatch spriteBatch)
 		{
-			spriteBatch.Draw(Main.magicPixel, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Transparent);
+			spriteBatch.Draw(TextureAssets.MagicPixel.Value, new Rectangle(0, 0, Main.screenWidth, Main.screenHeight), Color.Transparent);
 		}
 
 		public static void RestoreVanillaSpriteBatchSettings(SpriteBatch spriteBatch)
 		{
 			spriteBatch.End();
-			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.instance.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
+			spriteBatch.Begin(SpriteSortMode.Deferred, BlendState.AlphaBlend, Main.DefaultSamplerState, DepthStencilState.None, Main.Rasterizer, null, Main.GameViewMatrix.TransformationMatrix);
 		}
 
 		internal static void Load()
 		{
 			if (Main.netMode != NetmodeID.Server)
 			{
-				CircleEffect = ClickerClass.mod.GetEffect("Effects/CircleShader/Circle");
+				CircleEffect = ClickerClass.mod.GetEffect("Effects/CircleShader/Circle").Value;
 				LoadCircleEffectAdds();
 			}
 		}
