@@ -5,8 +5,9 @@ using System.Collections.Generic;
 using Terraria;
 using Terraria.GameContent.Generation;
 using Terraria.ID;
+using Terraria.IO;
 using Terraria.ModLoader;
-using Terraria.World.Generation;
+using Terraria.WorldBuilding;
 
 namespace ClickerClass
 {
@@ -22,7 +23,7 @@ namespace ClickerClass
 			}
 		}
 
-		private void GenerateExtraLoot(GenerationProgress progress)
+		private void GenerateExtraLoot(GenerationProgress progress, GameConfiguration configuration)
 		{
 			progress.Message = "Clicker Class: Generating Extra Loot";
 
