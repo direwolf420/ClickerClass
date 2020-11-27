@@ -43,7 +43,7 @@ namespace ClickerClass
 		{
 			item.useTime = 1;
 			item.useAnimation = 1;
-			item.useStyle = ItemUseStyleID.HoldingOut;
+			item.useStyle = ItemUseStyleID.Shoot;
 			item.holdStyle = 3;
 			item.noMelee = true;
 			item.shoot = ModContent.ProjectileType<ClickDamage>();

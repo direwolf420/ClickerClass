@@ -174,7 +174,7 @@ namespace ClickerClass
 		/// </summary>
 		public void QuickUseItemInSlot(int index)
 		{
-			if (index > -1 && index < Main.maxInventory && player.inventory[index].type != ItemID.None)
+			if (index > -1 && index < Main.InventorySlotsTotal && player.inventory[index].type != ItemID.None)
 			{
 				if (player.CheckMana(player.inventory[index], -1, false, false))
 				{
