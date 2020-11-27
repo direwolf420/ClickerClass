@@ -41,8 +41,8 @@ namespace ClickerClass
 		/// <param name="item">The <see cref="Item"/> to set the defaults for</param>
 		public static void SetClickerWeaponDefaults(Item item)
 		{
-			item.useTime = 1;
-			item.useAnimation = 1;
+			item.useTime = 2;
+			item.useAnimation = 2;
 			item.useStyle = ItemUseStyleID.Shoot;
 			item.holdStyle = 3;
 			item.noMelee = true;
