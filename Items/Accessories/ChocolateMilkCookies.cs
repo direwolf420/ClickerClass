@@ -35,12 +35,11 @@ namespace ClickerClass.Items.Accessories
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(Mod);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<ChocolateChip>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<MilkCookies>(), 1);
 			recipe.AddTile(TileID.TinkerersWorkbench);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

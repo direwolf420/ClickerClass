@@ -30,12 +30,11 @@ namespace ClickerClass.Items.Armors
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(Mod);
+			Recipe recipe = CreateRecipe();
 			recipe.AddRecipeGroup("ClickerClass:SilverBar", 25);
 			recipe.AddIngredient(ItemID.Wire, 75);
 			recipe.AddTile(TileID.Anvils);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

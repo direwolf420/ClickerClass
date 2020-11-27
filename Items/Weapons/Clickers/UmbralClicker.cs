@@ -33,22 +33,22 @@ namespace ClickerClass.Items.Weapons.Clickers
 		/*
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(Mod);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<DarkClicker>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<SlickClicker>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<PointyClicker>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<RedHotClicker>(), 1);
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
-			recipe.AddRecipe();
-			recipe = new ModRecipe(Mod);
+			recipe.Register();
+			recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<SinisterClicker>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<SlickClicker>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<PointyClicker>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<RedHotClicker>(), 1);
 			recipe.AddTile(TileID.DemonAltar);
 			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 		*/
 	}

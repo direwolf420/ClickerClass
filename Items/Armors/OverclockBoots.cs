@@ -30,12 +30,11 @@ namespace ClickerClass.Items.Armors
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(Mod);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.HallowedBar, 18);
 			recipe.AddIngredient(ItemID.SoulofFright, 6);
 			recipe.AddTile(TileID.MythrilAnvil);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

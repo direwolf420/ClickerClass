@@ -33,13 +33,12 @@ namespace ClickerClass.Items.Consumables
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(Mod);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ItemID.BottledWater, 1);
 			recipe.AddIngredient(ItemID.Daybloom, 1);
 			recipe.AddIngredient(ItemID.PinkGel, 1);
 			recipe.AddTile(TileID.Bottles);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }

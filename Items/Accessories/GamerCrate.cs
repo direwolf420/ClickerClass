@@ -44,14 +44,13 @@ namespace ClickerClass.Items.Accessories
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(Mod);
+			Recipe recipe = CreateRecipe();
 			recipe.AddIngredient(ModContent.ItemType<EnchantedLED>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<Soda>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<MousePad>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<HandCream>(), 1);
 			recipe.AddTile(TileID.TinkerersWorkbench);
-			recipe.SetResult(this);
-			recipe.AddRecipe();
+			recipe.Register();
 		}
 	}
 }
