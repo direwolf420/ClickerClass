@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using Terraria;
+using Terraria.Audio;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -79,7 +80,7 @@ namespace ClickerClass.Projectiles
 
 			if (projectile.timeLeft == 4)
 			{
-				Main.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 122);
+				SoundEngine.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 122);
 
 				for (int k = 0; k < 30; k++)
 				{

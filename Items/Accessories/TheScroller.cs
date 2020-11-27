@@ -1,6 +1,7 @@
 using ClickerClass.Dusts;
 using Microsoft.Xna.Framework;
 using Terraria;
+using Terraria.Audio;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
@@ -73,7 +74,7 @@ namespace ClickerClass.Items.Accessories
 				}
 				if (player.miscCounter % (rate * 2) == 0)
 				{
-					Main.PlaySound(SoundID.Item24, player.position);
+					SoundEngine.PlaySound(SoundID.Item24, player.position);
 				}
 
 				if (player.miscCounter % rate == 0)

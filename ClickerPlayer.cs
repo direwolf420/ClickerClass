@@ -10,6 +10,7 @@ using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.Audio;
 using Terraria.DataStructures;
 using Terraria.GameInput;
 using Terraria.ID;
@@ -186,7 +187,7 @@ namespace ClickerClass
 				}
 				else
 				{
-					Main.PlaySound(SoundID.Drip, (int)player.Center.X, (int)player.Center.Y, Main.rand.Next(3));
+					SoundEngine.PlaySound(SoundID.Drip, (int)player.Center.X, (int)player.Center.Y, Main.rand.Next(3));
 				}
 			}
 		}
@@ -283,7 +284,7 @@ namespace ClickerClass
 				{
 					pressedAutoClick = clickerClassTime;
 
-					Main.PlaySound(SoundID.MenuTick, player.position);
+					SoundEngine.PlaySound(SoundID.MenuTick, player.position);
 					clickerAutoClick = clickerAutoClick ? false : true;
 				}
 			}
@@ -548,7 +549,7 @@ namespace ClickerClass
 							{
 								if (cookieProjectile.ai[0] == 1f)
 								{
-									Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 4);
+									SoundEngine.PlaySound(2, (int)player.position.X, (int)player.position.Y, 4);
 									player.AddBuff(ModContent.BuffType<CookieBuff>(), 600);
 									player.HealLife(10);
 									for (int k = 0; k < 10; k++)
@@ -559,7 +560,7 @@ namespace ClickerClass
 								}
 								else
 								{
-									Main.PlaySound(2, (int)player.position.X, (int)player.position.Y, 2);
+									SoundEngine.PlaySound(2, (int)player.position.X, (int)player.position.Y, 2);
 									player.AddBuff(ModContent.BuffType<CookieBuff>(), 300);
 									for (int k = 0; k < 10; k++)
 									{
