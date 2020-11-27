@@ -14,7 +14,7 @@ namespace ClickerClass.Items.Tools
 		public override void SetDefaults()
 		{
 			item.damage = 60;
-			item.melee = true;
+			item.DamageType = DamageClass.Melee;
 			item.width = 20;
 			item.height = 20;
 			item.useTime = 7;

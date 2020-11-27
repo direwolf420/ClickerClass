@@ -152,13 +152,13 @@ namespace ClickerClass.Items
 			return base.CanUseItem(item, player);
 		}
 
-		public override void ModifyWeaponDamage(Item item, Player player, ref float add, ref float mult, ref float flat)
+		public override void ModifyWeaponDamage(Item item, Player player, ref Modifier damage, ref float flat)
 		{
 			if (ClickerSystem.IsClickerWeapon(item))
 			{
 				ClickerPlayer clickerPlayer = player.GetModPlayer<ClickerPlayer>();
 				flat += clickerPlayer.clickerDamageFlat;
-				mult *= clickerPlayer.clickerDamage;
+				damage.multiplicative *= clickerPlayer.clickerDamage;
 			}
 		}
 

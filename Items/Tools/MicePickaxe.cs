@@ -18,7 +18,7 @@ namespace ClickerClass.Items.Tools
 			item.useTime = 6;
 			item.useAnimation = 12;
 			item.damage = 80;
-			item.melee = true;
+			item.DamageType = DamageClass.Melee;
 			item.pick = 225;
 			item.useStyle = 1;
 			item.knockBack = 5.5f;
