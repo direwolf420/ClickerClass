@@ -636,6 +636,7 @@ namespace ClickerClass
 			outOfCombatTimer = 300;
 		}
 
+		/*
 		public override void ModifyDrawLayers(List<PlayerLayer> layers)
 		{
 			int index = layers.IndexOf(PlayerLayer.HeldItem);
@@ -940,5 +941,6 @@ namespace ClickerClass
 				}
 			}
 		});
+		*/
 	}
 }
