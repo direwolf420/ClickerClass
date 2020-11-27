@@ -75,8 +75,8 @@ namespace ClickerClass.Prefixes
 
 		private void AddClickerPrefix(ClickerPrefixType prefixType, string displayName, float damageMult = 1f, float radiusBonus = 0f, int clickBonus = 0, int critBonus = 0)
 		{
-			mod.AddPrefix(prefixType.ToString(), new ClickerPrefix(displayName, damageMult, radiusBonus, clickBonus, critBonus));
-			ClickerPrefixes.Add(mod.GetPrefix(prefixType.ToString()).Type);
+			Mod.AddPrefix(prefixType.ToString(), new ClickerPrefix(displayName, damageMult, radiusBonus, clickBonus, critBonus));
+			ClickerPrefixes.Add(Mod.GetPrefix(prefixType.ToString()).Type);
 		}
 	}
 

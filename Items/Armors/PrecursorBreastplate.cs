@@ -33,7 +33,7 @@ namespace ClickerClass.Items.Armors
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			ModRecipe recipe = new ModRecipe(Mod);
 			recipe.AddIngredient(ItemID.LunarTabletFragment, 18);
 			recipe.AddTile(TileID.MythrilAnvil);
 			recipe.SetResult(this);

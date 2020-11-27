@@ -29,7 +29,7 @@ namespace ClickerClass.Items.Accessories
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			ModRecipe recipe = new ModRecipe(Mod);
 			recipe.AddIngredient(ItemID.Silk, 15);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);

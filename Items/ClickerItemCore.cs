@@ -201,7 +201,7 @@ namespace ClickerClass.Items
 					index = tooltips.FindIndex(tt => tt.mod.Equals("Terraria") && tt.Name.Equals("ItemName"));
 					if (index != -1)
 					{
-						tooltips.Insert(index + 1, new TooltipLine(mod, "ClickerTag", "-Clicker Class-")
+						tooltips.Insert(index + 1, new TooltipLine(Mod, "ClickerTag", "-Clicker Class-")
 						{
 							overrideColor = new Color(Main.DiscoR, Main.DiscoG, Main.DiscoB)
 						});
@@ -215,7 +215,7 @@ namespace ClickerClass.Items
 					if (index != -1)
 					{
 						string color = (new Color(252, 210, 44) * alpha).Hex3();
-						tooltips.Add(new TooltipLine(mod, "transformationText", "Total clicks: " + $"[c/" + color + ":" + clickerPlayer.clickerTotal + "]"));
+						tooltips.Add(new TooltipLine(Mod, "transformationText", "Total clicks: " + $"[c/" + color + ":" + clickerPlayer.clickerTotal + "]"));
 					}
 				}
 
@@ -248,11 +248,11 @@ namespace ClickerClass.Items
 							int clickAmountTotal = clickerPlayer.GetClickAmountTotal(this);
 							if (clickAmountTotal > 1)
 							{
-								tooltips.Insert(index + 1, new TooltipLine(mod, "itemClickerAmount", clickAmountTotal + " clicks - " + $"[c/" + color + ":" + itemClickerEffect + "]"));
+								tooltips.Insert(index + 1, new TooltipLine(Mod, "itemClickerAmount", clickAmountTotal + " clicks - " + $"[c/" + color + ":" + itemClickerEffect + "]"));
 							}
 							else
 							{
-								tooltips.Insert(index + 1, new TooltipLine(mod, "itemClickerAmount", "1 click - " + $"[c/" + color + ":" + itemClickerEffect + "]"));
+								tooltips.Insert(index + 1, new TooltipLine(Mod, "itemClickerAmount", "1 click - " + $"[c/" + color + ":" + itemClickerEffect + "]"));
 							}
 						}
 					}
@@ -265,10 +265,10 @@ namespace ClickerClass.Items
 
 				if (radiusBoostPrefix != 0)
 				{
-					int ttindex = tooltips.FindLastIndex(t => (t.mod == "Terraria" || t.mod == mod.Name) && (t.isModifier || t.Name.StartsWith("Tooltip") || t.Name.Equals("Material")));
+					int ttindex = tooltips.FindLastIndex(t => (t.mod == "Terraria" || t.mod == Mod.Name) && (t.isModifier || t.Name.StartsWith("Tooltip") || t.Name.Equals("Material")));
 					if (ttindex != -1)
 					{
-						TooltipLine tt = new TooltipLine(mod, "PrefixClickerRadius", (radiusBoostPrefix > 0 ? "+" : "") + (int)((radiusBoostPrefix / 2) * 100) + "% base clicker radius")
+						TooltipLine tt = new TooltipLine(Mod, "PrefixClickerRadius", (radiusBoostPrefix > 0 ? "+" : "") + (int)((radiusBoostPrefix / 2) * 100) + "% base clicker radius")
 						{
 							isModifier = true,
 							isModifierBad = radiusBoostPrefix < 0
@@ -279,10 +279,10 @@ namespace ClickerClass.Items
 
 				if (clickBoostPrefix != 0)
 				{
-					int ttindex = tooltips.FindLastIndex(t => (t.mod == "Terraria" || t.mod == mod.Name) && (t.isModifier || t.Name.StartsWith("Tooltip") || t.Name.Equals("Material")));
+					int ttindex = tooltips.FindLastIndex(t => (t.mod == "Terraria" || t.mod == Mod.Name) && (t.isModifier || t.Name.StartsWith("Tooltip") || t.Name.Equals("Material")));
 					if (ttindex != -1)
 					{
-						TooltipLine tt = new TooltipLine(mod, "PrefixClickBoost", (clickBoostPrefix < 0 ? "" : "+") + clickBoostPrefix + " clicks required")
+						TooltipLine tt = new TooltipLine(Mod, "PrefixClickBoost", (clickBoostPrefix < 0 ? "" : "+") + clickBoostPrefix + " clicks required")
 						{
 							isModifier = true,
 							isModifierBad = clickBoostPrefix > 0
@@ -293,14 +293,14 @@ namespace ClickerClass.Items
 			}
 		}
 
-		public override bool NewPreReforge(Item item)
+		public override bool PreReforge(Item item)
 		{
 			if (ClickerSystem.IsClickerWeapon(item))
 			{
 				radiusBoostPrefix = 0f;
 				clickBoostPrefix = 0;
 			}
-			return base.NewPreReforge(item);
+			return base.PreReforge(item);
 		}
 
 		public override int ChoosePrefix(Item item, UnifiedRandom rand)

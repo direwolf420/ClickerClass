@@ -44,7 +44,7 @@ namespace ClickerClass.Items.Accessories
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			ModRecipe recipe = new ModRecipe(Mod);
 			recipe.AddIngredient(ModContent.ItemType<EnchantedLED>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<Soda>(), 1);
 			recipe.AddIngredient(ModContent.ItemType<MousePad>(), 1);

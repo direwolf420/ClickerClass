@@ -32,7 +32,7 @@ namespace ClickerClass.Items.Weapons.Clickers
 
 		public override void AddRecipes()
 		{
-			ModRecipe recipe = new ModRecipe(mod);
+			ModRecipe recipe = new ModRecipe(Mod);
 			recipe.AddIngredient(ItemID.DemoniteBar, 8);
 			recipe.AddTile(TileID.Anvils);
 			recipe.SetResult(this);
