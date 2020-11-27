@@ -2,6 +2,7 @@ using ClickerClass.Utilities;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.ID;
 
 namespace ClickerClass.Projectiles
@@ -48,12 +49,13 @@ namespace ClickerClass.Projectiles
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			Vector2 drawOrigin = new Vector2(Main.projectileTexture[projectile.type].Width * 0.5f, projectile.height * 0.5f);
+			var asset = TextureAssets.Projectile[projectile.type];
+			Vector2 drawOrigin = new Vector2(asset.Width() * 0.5f, projectile.height * 0.5f);
 			for (int i = projectile.oldPos.Length - 1; i >= 0; i--)
 			{
 				Vector2 drawPos = projectile.oldPos[i] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
 				Color color = projectile.GetAlpha(lightColor * 0.25f) * ((projectile.oldPos.Length - i) / (float)projectile.oldPos.Length);
-				spriteBatch.Draw(Main.projectileTexture[projectile.type], drawPos, null, color, projectile.oldRot[i], drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+				spriteBatch.Draw(asset.Value, drawPos, null, color, projectile.oldRot[i], drawOrigin, projectile.scale, SpriteEffects.None, 0f);
 			}
 			return false;
 		}

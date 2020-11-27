@@ -28,7 +28,7 @@ namespace ClickerClass.Projectiles
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			spriteBatch.Draw(Mod.GetTexture("Projectiles/TotalityClickerPro_Effect"), projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0) * ((0.65f + pulse) * (0.01f * projectile.timeLeft)), rotation, new Vector2(58, 58), 1.35f + pulse, SpriteEffects.None, 0f);
+			spriteBatch.Draw(Mod.GetTexture("Projectiles/TotalityClickerPro_Effect").Value, projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0) * ((0.65f + pulse) * (0.01f * projectile.timeLeft)), rotation, new Vector2(58, 58), 1.35f + pulse, SpriteEffects.None, 0f);
 			return true;
 		}
 

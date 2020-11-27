@@ -40,7 +40,7 @@ namespace ClickerClass.Projectiles
 		{
 			if (projectile.timeLeft > 4)
 			{
-				spriteBatch.Draw(Mod.GetTexture("Projectiles/AstralClickerPro"), projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0) * 0.25f, projectile.ai[0], new Vector2(30, 30), 1.25f, SpriteEffects.None, 0f);
+				spriteBatch.Draw(Mod.GetTexture("Projectiles/AstralClickerPro").Value, projectile.Center - Main.screenPosition, null, new Color(255, 255, 255, 0) * 0.25f, projectile.ai[0], new Vector2(30, 30), 1.25f, SpriteEffects.None, 0f);
 			}
 			return true;
 		}

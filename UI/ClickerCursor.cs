@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System.Collections.Generic;
 using Terraria;
+using Terraria.GameContent;
 using Terraria.UI;
 
 namespace ClickerClass.UI
@@ -42,12 +43,13 @@ namespace ClickerClass.UI
 				return true;
 			}
 
-			Texture2D borderTexture = ClickerClass.mod.GetTexture("UI/CursorOutline");
+			var borderAsset = ClickerClass.mod.GetTexture("UI/CursorOutline");
+			Texture2D borderTexture = borderAsset.Value;
 			Texture2D texture;
 			Item item = player.HeldItem;
 			if (CanDrawCursor(item))
 			{
-				texture = Main.itemTexture[item.type];
+				texture = TextureAssets.Item[item.type].Value;
 			}
 			else
 			{
