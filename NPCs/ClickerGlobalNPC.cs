@@ -121,7 +121,7 @@ namespace ClickerClass.NPCs
 			}
 		}
 
-		public override void NPCLoot(NPC npc)
+		public override void OnKill(NPC npc)
 		{
 			if (npc.type == NPCID.GoblinSorcerer && npc.value > 0f)
 			{
