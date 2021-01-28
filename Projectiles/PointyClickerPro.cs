@@ -12,50 +12,50 @@ namespace ClickerClass.Projectiles
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 20;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 2;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 20;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 2;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 14;
-			projectile.height = 14;
-			projectile.aiStyle = -1;
-			projectile.penetrate = -1;
-			projectile.friendly = true;
-			projectile.timeLeft = 120;
-			projectile.extraUpdates = 2;
-			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 60;
+			Projectile.width = 14;
+			Projectile.height = 14;
+			Projectile.aiStyle = -1;
+			Projectile.penetrate = -1;
+			Projectile.friendly = true;
+			Projectile.timeLeft = 120;
+			Projectile.extraUpdates = 2;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 60;
 		}
 
 		public override void AI()
 		{
-			if (projectile.localAI[0] < 48)
+			if (Projectile.localAI[0] < 48)
 			{
-				projectile.localAI[0]++;
+				Projectile.localAI[0]++;
 			}
 
-			if (projectile.ai[1] > 0f)
+			if (Projectile.ai[1] > 0f)
 			{
-				projectile.SineWaveMovement(projectile.ai[0], 10f, MathHelper.TwoPi / 40, projectile.ai[0] == 0);
+				Projectile.SineWaveMovement(Projectile.ai[0], 10f, MathHelper.TwoPi / 40, Projectile.ai[0] == 0);
 			}
 			else
 			{
-				projectile.SineWaveMovement(projectile.ai[0], -10f, MathHelper.TwoPi / 40, projectile.ai[0] == 0);
+				Projectile.SineWaveMovement(Projectile.ai[0], -10f, MathHelper.TwoPi / 40, Projectile.ai[0] == 0);
 			}
-			projectile.ai[0]++;
+			Projectile.ai[0]++;
 		}
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			var asset = TextureAssets.Projectile[projectile.type];
-			Vector2 drawOrigin = new Vector2(asset.Width() * 0.5f, projectile.height * 0.5f);
-			for (int i = projectile.oldPos.Length - 1; i >= 0; i--)
+			var asset = TextureAssets.Projectile[Projectile.type];
+			Vector2 drawOrigin = new Vector2(asset.Width() * 0.5f, Projectile.height * 0.5f);
+			for (int i = Projectile.oldPos.Length - 1; i >= 0; i--)
 			{
-				Vector2 drawPos = projectile.oldPos[i] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-				Color color = projectile.GetAlpha(lightColor * 0.25f) * ((projectile.oldPos.Length - i) / (float)projectile.oldPos.Length);
-				spriteBatch.Draw(asset.Value, drawPos, null, color, projectile.oldRot[i], drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+				Vector2 drawPos = Projectile.oldPos[i] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+				Color color = Projectile.GetAlpha(lightColor * 0.25f) * ((Projectile.oldPos.Length - i) / (float)Projectile.oldPos.Length);
+				spriteBatch.Draw(asset.Value, drawPos, null, color, Projectile.oldRot[i], drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
 			}
 			return false;
 		}

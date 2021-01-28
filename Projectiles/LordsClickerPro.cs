@@ -8,26 +8,26 @@ namespace ClickerClass.Projectiles
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			Main.projFrames[projectile.type] = 7;
+			Main.projFrames[Projectile.type] = 7;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 196;
-			projectile.height = 196;
-			projectile.aiStyle = -1;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 60;
-			projectile.friendly = true;
-			projectile.tileCollide = false;
+			Projectile.width = 196;
+			Projectile.height = 196;
+			Projectile.aiStyle = -1;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft = 60;
+			Projectile.friendly = true;
+			Projectile.tileCollide = false;
 
-			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 60;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 60;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
 		{
-			return new Color(255, 255, 255, 0) * (0.08f * projectile.timeLeft);
+			return new Color(255, 255, 255, 0) * (0.08f * Projectile.timeLeft);
 		}
 
 		public override void ModifyHitNPC(NPC target, ref int damage, ref float knockback, ref bool crit, ref int hitDirection)
@@ -38,15 +38,15 @@ namespace ClickerClass.Projectiles
 
 		public override void PostAI()
 		{
-			projectile.frameCounter++;
-			if (projectile.frameCounter > 3)
+			Projectile.frameCounter++;
+			if (Projectile.frameCounter > 3)
 			{
-				projectile.frame++;
-				projectile.frameCounter = 0;
+				Projectile.frame++;
+				Projectile.frameCounter = 0;
 			}
-			if (projectile.frame >= 12)
+			if (Projectile.frame >= 12)
 			{
-				projectile.Kill();
+				Projectile.Kill();
 				return;
 			}
 		}

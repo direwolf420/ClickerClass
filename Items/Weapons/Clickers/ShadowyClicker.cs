@@ -13,19 +13,19 @@ namespace ClickerClass.Items.Weapons.Clickers
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			SetRadius(item, 2.15f);
-			SetColor(item, new Color(150, 100, 255, 0));
-			SetDust(item, 27);
-			SetAmount(item, 12);
-			SetEffect(item, "Curse");
+			SetRadius(Item, 2.15f);
+			SetColor(Item, new Color(150, 100, 255, 0));
+			SetDust(Item, 27);
+			SetAmount(Item, 12);
+			SetEffect(Item, "Curse");
 
 
-			item.damage = 12;
-			item.width = 30;
-			item.height = 30;
-			item.knockBack = 1f;
-			item.value = 15000;
-			item.rare = 1;
+			Item.damage = 12;
+			Item.width = 30;
+			Item.height = 30;
+			Item.knockBack = 1f;
+			Item.value = 15000;
+			Item.rare = 1;
 		}
 	}
 }

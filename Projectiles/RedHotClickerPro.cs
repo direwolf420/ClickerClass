@@ -8,27 +8,27 @@ namespace ClickerClass.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 8;
-			projectile.height = 8;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 10;
-			projectile.alpha = 255;
-			projectile.extraUpdates = 3;
+			Projectile.width = 8;
+			Projectile.height = 8;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft = 10;
+			Projectile.alpha = 255;
+			Projectile.extraUpdates = 3;
 		}
 
 		public override void AI()
 		{
-			if (projectile.ai[0] < 1f)
+			if (Projectile.ai[0] < 1f)
 			{
 				for (int k = 0; k < 30; k++)
 				{
-					Dust dust = Dust.NewDustDirect(projectile.position, projectile.width, projectile.height, 174, Main.rand.NextFloat(-8f, 8f), Main.rand.NextFloat(-8f, 8f), 125, default, 1.25f);
+					Dust dust = Dust.NewDustDirect(Projectile.position, Projectile.width, Projectile.height, 174, Main.rand.NextFloat(-8f, 8f), Main.rand.NextFloat(-8f, 8f), 125, default, 1.25f);
 					dust.noGravity = true;
 				}
 				for (int u = 0; u < Main.maxNPCs; u++)
 				{
 					NPC target = Main.npc[u];
-					if (target.CanBeChasedBy(projectile) && target.DistanceSQ(projectile.Center) < 100 * 250)
+					if (target.CanBeChasedBy(Projectile) && target.DistanceSQ(Projectile.Center) < 100 * 250)
 					{
 						target.AddBuff(BuffID.Oiled, 180, false);
 						target.AddBuff(BuffID.OnFire, 180, false);
@@ -49,7 +49,7 @@ namespace ClickerClass.Projectiles
 						}
 					}
 				}
-				projectile.ai[0] += 1f;
+				Projectile.ai[0] += 1f;
 			}
 		}
 	}

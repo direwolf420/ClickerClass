@@ -10,45 +10,45 @@ namespace ClickerClass.Projectiles
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			Main.projFrames[projectile.type] = 2;
+			Main.projFrames[Projectile.type] = 2;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 30;
-			projectile.height = 30;
-			projectile.aiStyle = -1;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 300;
-			projectile.ignoreWater = true;
-			projectile.tileCollide = false;
+			Projectile.width = 30;
+			Projectile.height = 30;
+			Projectile.aiStyle = -1;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft = 300;
+			Projectile.ignoreWater = true;
+			Projectile.tileCollide = false;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
 		{
-			if (projectile.timeLeft > 150)
+			if (Projectile.timeLeft > 150)
 			{
-				return new Color(255, 255, 255, 200) * (0.005f * (int)(300 - projectile.timeLeft));
+				return new Color(255, 255, 255, 200) * (0.005f * (int)(300 - Projectile.timeLeft));
 			}
 			else
 			{
-				return new Color(255, 255, 255, 200) * (0.005f * projectile.timeLeft);
+				return new Color(255, 255, 255, 200) * (0.005f * Projectile.timeLeft);
 			}
 		}
 
 		public override void AI()
 		{
-			Player player = Main.player[projectile.owner];
-			projectile.frame = (int)projectile.ai[0];
-			projectile.rotation -= 0.01f;
+			Player player = Main.player[Projectile.owner];
+			Projectile.frame = (int)Projectile.ai[0];
+			Projectile.rotation -= 0.01f;
 
-			if (projectile.ai[1] < 1f)
+			if (Projectile.ai[1] < 1f)
 			{
-				location = player.Center - projectile.Center;
-				projectile.ai[1] += 1f;
+				location = player.Center - Projectile.Center;
+				Projectile.ai[1] += 1f;
 			}
 
-			projectile.Center = new Vector2(player.Center.X, player.Center.Y + player.gfxOffY) - location;
+			Projectile.Center = new Vector2(player.Center.X, player.Center.Y + player.gfxOffY) - location;
 		}
 	}
 }

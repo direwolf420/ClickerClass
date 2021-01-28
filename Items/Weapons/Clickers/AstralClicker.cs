@@ -17,17 +17,17 @@ namespace ClickerClass.Items.Weapons.Clickers
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			SetRadius(item, 6f);
-			SetColor(item, new Color(150, 150, 225, 0));
-			SetDust(item, ModContent.DustType<MiceDust>());
-			SetAmount(item, 15);
-			SetEffect(item, "Spiral");
+			SetRadius(Item, 6f);
+			SetColor(Item, new Color(150, 150, 225, 0));
+			SetDust(Item, ModContent.DustType<MiceDust>());
+			SetAmount(Item, 15);
+			SetEffect(Item, "Spiral");
 
 
-			item.damage = 82;
-			item.knockBack = 1f;
-			item.value = Item.sellPrice(0, 5, 0, 0);
-			item.rare = 10;
+			Item.damage = 82;
+			Item.knockBack = 1f;
+			Item.value = Item.sellPrice(0, 5, 0, 0);
+			Item.rare = 10;
 		}
 
 		public override void AddRecipes()

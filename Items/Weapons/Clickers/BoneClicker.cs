@@ -16,20 +16,20 @@ namespace ClickerClass.Items.Weapons.Clickers
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			SetRadius(item, 1.1f);
-			SetColor(item, new Color(225, 225, 200, 0));
-			SetDust(item, 216);
-			SetAmount(item, 12);
-			SetEffect(item, "Lacerate");
+			SetRadius(Item, 1.1f);
+			SetColor(Item, new Color(225, 225, 200, 0));
+			SetDust(Item, 216);
+			SetAmount(Item, 12);
+			SetEffect(Item, "Lacerate");
 
 
-			item.damage = 13;
-			item.width = 30;
-			item.height = 30;
-			item.knockBack = 2f;
-			item.noMelee = true;
-			item.value = 15000;
-			item.rare = 1;
+			Item.damage = 13;
+			Item.width = 30;
+			Item.height = 30;
+			Item.knockBack = 2f;
+			Item.noMelee = true;
+			Item.value = 15000;
+			Item.rare = 1;
 		}
 
 		public override void AddRecipes()

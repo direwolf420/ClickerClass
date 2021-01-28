@@ -16,19 +16,19 @@ namespace ClickerClass.Items.Consumables
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.useTime = 17;
-			item.useAnimation = 17;
-			item.useStyle = 2;
-			item.useTurn = true;
-			item.value = Item.sellPrice(0, 0, 2, 0);
-			item.consumable = true;
-			item.maxStack = 30;
-			item.rare = 1;
-			item.UseSound = SoundID.Item3;
-			item.buffType = ModContent.BuffType<InfluenceBuff>();
-			item.buffTime = 18000;
+			Item.width = 20;
+			Item.height = 20;
+			Item.useTime = 17;
+			Item.useAnimation = 17;
+			Item.useStyle = 2;
+			Item.useTurn = true;
+			Item.value = Item.sellPrice(0, 0, 2, 0);
+			Item.consumable = true;
+			Item.maxStack = 30;
+			Item.rare = 1;
+			Item.UseSound = SoundID.Item3;
+			Item.buffType = ModContent.BuffType<InfluenceBuff>();
+			Item.buffTime = 18000;
 		}
 
 		public override void AddRecipes()
