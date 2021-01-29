@@ -152,7 +152,7 @@ namespace ClickerClass.Items
 			return base.CanUseItem(item, player);
 		}
 
-		public override void ModifyWeaponDamage(Item item, Player player, ref Modifier damage, ref float flat)
+		public override void ModifyWeaponDamage(Item item, Player player, ref StatModifier damage, ref float flat)
 		{
 			if (ClickerSystem.IsClickerWeapon(item))
 			{
@@ -162,7 +162,7 @@ namespace ClickerClass.Items
 			}
 		}
 
-		public override void GetWeaponCrit(Item item, Player player, ref int crit)
+		public override void ModifyWeaponCrit(Item item, Player player, ref int crit)
 		{
 			if (ClickerSystem.IsClickerWeapon(item))
 			{

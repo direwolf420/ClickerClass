@@ -21,8 +21,8 @@ namespace ClickerClass.Projectiles
 
 			// Vanilla crit chance calculations. Crit chance of the currently held weapon matters, regardless of the damage type of the weapon.
 			int critChance = heldItem.crit;
-			ItemLoader.GetWeaponCrit(heldItem, player, ref critChance);
-			PlayerHooks.GetWeaponCrit(player, heldItem, ref critChance);
+			ItemLoader.ModifyWeaponCrit(heldItem, player, ref critChance);
+			PlayerHooks.ModifyWeaponCrit(player, heldItem, ref critChance);
 			if (!crit)
 			{
 				crit = critChance >= 100 || Main.rand.Next(1, 101) <= critChance;
