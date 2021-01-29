@@ -17,27 +17,27 @@ namespace ClickerClass.Projectiles
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			Main.projFrames[projectile.type] = 7;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 8;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+			Main.projFrames[Projectile.type] = 7;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 8;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 22;
-			projectile.height = 22;
-			projectile.aiStyle = -1;
-			projectile.penetrate = -1;
-			projectile.tileCollide = false;
-			projectile.timeLeft = 300;
-			projectile.extraUpdates = 2;
-			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 30;
+			Projectile.width = 22;
+			Projectile.height = 22;
+			Projectile.aiStyle = -1;
+			Projectile.penetrate = -1;
+			Projectile.tileCollide = false;
+			Projectile.timeLeft = 300;
+			Projectile.extraUpdates = 2;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 30;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
 		{
-			if (projectile.timeLeft > 4)
+			if (Projectile.timeLeft > 4)
 			{
 				return new Color(255, 255, 255, 0) * 1f;
 			}
@@ -49,18 +49,18 @@ namespace ClickerClass.Projectiles
 
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
-			if (projectile.timeLeft > 4)
+			if (Projectile.timeLeft > 4)
 			{
 				Rectangle frame = new Rectangle(0, 0, 22, 26);
-				frame.Y += 26 * projectile.frame;
+				frame.Y += 26 * Projectile.frame;
 
-				var asset = TextureAssets.Projectile[projectile.type];
-				Vector2 drawOrigin = new Vector2(asset.Width() * 0.5f, projectile.height * 0.5f);
-				for (int k = 0; k < projectile.oldPos.Length; k++)
+				var asset = TextureAssets.Projectile[Projectile.type];
+				Vector2 drawOrigin = new Vector2(asset.Width() * 0.5f, Projectile.height * 0.5f);
+				for (int k = 0; k < Projectile.oldPos.Length; k++)
 				{
-					Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-					Color color = projectile.GetAlpha(new Color(255, 255, 255, 0) * 0.25f) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
-					spriteBatch.Draw(asset.Value, drawPos, frame, color * 0.25f, rotation, drawOrigin, projectile.scale, SpriteEffects.None, 0f);
+					Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+					Color color = Projectile.GetAlpha(new Color(255, 255, 255, 0) * 0.25f) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+					spriteBatch.Draw(asset.Value, drawPos, frame, color * 0.25f, rotation, drawOrigin, Projectile.scale, SpriteEffects.None, 0f);
 				}
 			}
 			return true;
@@ -70,32 +70,32 @@ namespace ClickerClass.Projectiles
 		{
 			if (!colorChoice)
 			{
-				projectile.frame = Main.rand.Next(7);
+				Projectile.frame = Main.rand.Next(7);
 				colorChoice = true;
 			}
-			projectile.rotation += projectile.velocity.X > 0f ? 0.35f : -0.35f;
+			Projectile.rotation += Projectile.velocity.X > 0f ? 0.35f : -0.35f;
 
 			timer++;
 			if (timer % 5 == 0)
 			{
-				rotation = projectile.rotation;
+				rotation = Projectile.rotation;
 			}
 
 			int dustType = 90;
-			if (projectile.frame == 1) { dustType = 92; }
-			if (projectile.frame == 2) { dustType = 87; }
-			if (projectile.frame == 3) { dustType = 89; }
-			if (projectile.frame == 4) { dustType = 92; }
-			if (projectile.frame == 5) { dustType = 88; }
-			if (projectile.frame == 6) { dustType = 86; }
+			if (Projectile.frame == 1) { dustType = 92; }
+			if (Projectile.frame == 2) { dustType = 87; }
+			if (Projectile.frame == 3) { dustType = 89; }
+			if (Projectile.frame == 4) { dustType = 92; }
+			if (Projectile.frame == 5) { dustType = 88; }
+			if (Projectile.frame == 6) { dustType = 86; }
 
-			Vector2 vec = new Vector2(projectile.ai[0], projectile.ai[1]);
-			if (Vector2.Distance(projectile.Center, vec) <= 10)
+			Vector2 vec = new Vector2(Projectile.ai[0], Projectile.ai[1]);
+			if (Vector2.Distance(Projectile.Center, vec) <= 10)
 			{
-				if (projectile.timeLeft > 4)
+				if (Projectile.timeLeft > 4)
 				{
-					SoundEngine.PlaySound(2, (int)projectile.Center.X, (int)projectile.Center.Y, 110);
-					projectile.timeLeft = 4;
+					SoundEngine.PlaySound(2, (int)Projectile.Center.X, (int)Projectile.Center.Y, 110);
+					Projectile.timeLeft = 4;
 
 					float num102 = 30f;
 					int num103 = 0;
@@ -103,31 +103,31 @@ namespace ClickerClass.Projectiles
 					{
 						Vector2 vector12 = Vector2.UnitX * 0f;
 						vector12 += -Vector2.UnitY.RotatedBy((double)((float)num103 * (6.28318548f / num102)), default(Vector2)) * new Vector2(8f, 8f);
-						vector12 = vector12.RotatedBy((double)projectile.velocity.ToRotation(), default(Vector2));
-						int num104 = Dust.NewDust(projectile.Center, 0, 0, dustType, 0f, 0f, 0, default(Color), 1.25f);
-						if (projectile.frame == 1) { Main.dust[num104].shader = GameShaders.Armor.GetSecondaryShader(70, Main.LocalPlayer); }
+						vector12 = vector12.RotatedBy((double)Projectile.velocity.ToRotation(), default(Vector2));
+						int num104 = Dust.NewDust(Projectile.Center, 0, 0, dustType, 0f, 0f, 0, default(Color), 1.25f);
+						if (Projectile.frame == 1) { Main.dust[num104].shader = GameShaders.Armor.GetSecondaryShader(70, Main.LocalPlayer); }
 						Main.dust[num104].noGravity = true;
-						Main.dust[num104].position = projectile.Center + vector12;
-						Main.dust[num104].velocity = projectile.velocity * 0f + vector12.SafeNormalize(Vector2.UnitY) * 5f;
+						Main.dust[num104].position = Projectile.Center + vector12;
+						Main.dust[num104].velocity = Projectile.velocity * 0f + vector12.SafeNormalize(Vector2.UnitY) * 5f;
 						int num = num103;
 						num103 = num + 1;
 					}
 				}
 			}
 
-			if (projectile.owner == Main.myPlayer && projectile.timeLeft <= 3)
+			if (Projectile.owner == Main.myPlayer && Projectile.timeLeft <= 3)
 			{
-				projectile.velocity.X = 0f;
-				projectile.velocity.Y = 0f;
-				projectile.tileCollide = false;
-				projectile.friendly = true;
-				projectile.alpha = 255;
-				projectile.position.X = projectile.position.X + (float)(projectile.width / 2);
-				projectile.position.Y = projectile.position.Y + (float)(projectile.height / 2);
-				projectile.width = 150;
-				projectile.height = 150;
-				projectile.position.X = projectile.position.X - (float)(projectile.width / 2);
-				projectile.position.Y = projectile.position.Y - (float)(projectile.height / 2);
+				Projectile.velocity.X = 0f;
+				Projectile.velocity.Y = 0f;
+				Projectile.tileCollide = false;
+				Projectile.friendly = true;
+				Projectile.alpha = 255;
+				Projectile.position.X = Projectile.position.X + (float)(Projectile.width / 2);
+				Projectile.position.Y = Projectile.position.Y + (float)(Projectile.height / 2);
+				Projectile.width = 150;
+				Projectile.height = 150;
+				Projectile.position.X = Projectile.position.X - (float)(Projectile.width / 2);
+				Projectile.position.Y = Projectile.position.Y - (float)(Projectile.height / 2);
 			}
 		}
 	}

@@ -17,20 +17,20 @@ namespace ClickerClass.Items.Weapons.Clickers
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			SetRadius(item, 2.45f);
-			SetColor(item, new Color(255, 175, 0, 0));
-			SetDust(item, 153);
-			SetAmount(item, 1);
-			SetEffect(item, "Sticky Honey");
+			SetRadius(Item, 2.45f);
+			SetColor(Item, new Color(255, 175, 0, 0));
+			SetDust(Item, 153);
+			SetAmount(Item, 1);
+			SetEffect(Item, "Sticky Honey");
 
 
-			item.damage = 13;
-			item.width = 30;
-			item.height = 30;
-			item.knockBack = 2f;
-			item.value = 10000;
-			item.rare = 3;
-			item.shoot = ModContent.ProjectileType<HoneyGlazedClickerPro>();
+			Item.damage = 13;
+			Item.width = 30;
+			Item.height = 30;
+			Item.knockBack = 2f;
+			Item.value = 10000;
+			Item.rare = 3;
+			Item.shoot = ModContent.ProjectileType<HoneyGlazedClickerPro>();
 		}
 
 		public override void AddRecipes()

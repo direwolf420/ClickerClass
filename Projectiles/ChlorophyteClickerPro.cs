@@ -7,16 +7,16 @@ namespace ClickerClass.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 32;
-			projectile.height = 32;
-			projectile.aiStyle = -1;
-			projectile.alpha = 150;
-			projectile.friendly = true;
-			projectile.tileCollide = false;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 180;
-			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 45;
+			Projectile.width = 32;
+			Projectile.height = 32;
+			Projectile.aiStyle = -1;
+			Projectile.alpha = 150;
+			Projectile.friendly = true;
+			Projectile.tileCollide = false;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft = 180;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 45;
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -27,11 +27,11 @@ namespace ClickerClass.Projectiles
 
 		public override void AI()
 		{
-			projectile.rotation += projectile.velocity.X > 0f ? 0.1f : -0.1f;
-			projectile.velocity *= 0.95f;
-			if (projectile.timeLeft < 20)
+			Projectile.rotation += Projectile.velocity.X > 0f ? 0.1f : -0.1f;
+			Projectile.velocity *= 0.95f;
+			if (Projectile.timeLeft < 20)
 			{
-				projectile.alpha += 5;
+				Projectile.alpha += 5;
 			}
 		}
 	}

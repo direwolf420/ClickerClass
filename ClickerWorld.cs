@@ -11,7 +11,7 @@ using Terraria.WorldBuilding;
 
 namespace ClickerClass
 {
-	public class ClickerWorld : ModWorld
+	public class ClickerWorld : ModSystem
 	{
 		public override void ModifyWorldGenTasks(List<GenPass> tasks, ref float totalWeight)
 		{

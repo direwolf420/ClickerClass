@@ -15,20 +15,20 @@ namespace ClickerClass.Items.Weapons.Clickers
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			SetRadius(item, 6f);
-			SetColor(item, new Color(175, 255, 255, 0));
-			SetDust(item, 15);
-			SetAmount(item, 1);
-			SetEffect(item, "Freeze");
+			SetRadius(Item, 6f);
+			SetColor(Item, new Color(175, 255, 255, 0));
+			SetDust(Item, 15);
+			SetAmount(Item, 1);
+			SetEffect(Item, "Freeze");
 
 
-			item.damage = 82;
-			item.width = 30;
-			item.height = 30;
-			item.knockBack = 1f;
-			item.value = 500000;
-			item.rare = 8;
-			item.shoot = ModContent.ProjectileType<FrozenClickerPro>();
+			Item.damage = 82;
+			Item.width = 30;
+			Item.height = 30;
+			Item.knockBack = 1f;
+			Item.value = 500000;
+			Item.rare = 8;
+			Item.shoot = ModContent.ProjectileType<FrozenClickerPro>();
 		}
 	}
 }

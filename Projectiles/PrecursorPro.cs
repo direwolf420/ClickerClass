@@ -7,15 +7,15 @@ namespace ClickerClass.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 30;
-			projectile.height = 30;
-			projectile.aiStyle = -1;
-			projectile.alpha = 255;
-			projectile.tileCollide = false;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 40;
-			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 10;
+			Projectile.width = 30;
+			Projectile.height = 30;
+			Projectile.aiStyle = -1;
+			Projectile.alpha = 255;
+			Projectile.tileCollide = false;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft = 40;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 10;
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)
@@ -26,15 +26,15 @@ namespace ClickerClass.Projectiles
 
 		public override void AI()
 		{
-			if (projectile.timeLeft <= 10)
+			if (Projectile.timeLeft <= 10)
 			{
-				projectile.friendly = true;
-				if (projectile.ai[0] < 1f)
+				Projectile.friendly = true;
+				if (Projectile.ai[0] < 1f)
 				{
-					projectile.ai[0] += 1f;
+					Projectile.ai[0] += 1f;
 					for (int k = 0; k < 8; k++)
 					{
-						Dust dust = Dust.NewDustDirect(projectile.Center, 10, 10, 174, Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f), 0, default, 1.25f);
+						Dust dust = Dust.NewDustDirect(Projectile.Center, 10, 10, 174, Main.rand.NextFloat(-3f, 3f), Main.rand.NextFloat(-3f, 3f), 0, default, 1.25f);
 						dust.noGravity = true;
 					}
 				}
