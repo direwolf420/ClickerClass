@@ -8,6 +8,8 @@ using Terraria.GameContent.ItemDropRules;
 using Terraria.Graphics.Shaders;
 using Terraria.ID;
 using Terraria.ModLoader;
+using System.Linq;
+using static Terraria.GameContent.ItemDropRules.Chains;
 
 namespace ClickerClass.NPCs
 {
@@ -124,6 +126,35 @@ namespace ClickerClass.NPCs
 
 		public override void ModifyNPCLoot(NPC npc, NPCLoot npcLoot)
 		{
+			if (npc.type == NPCID.MoonLordCore)
+			{
+				int matchID = ItemID.LunarFlareBook;
+				int itemToInsert = ItemID.DirtBlock;
+
+				OneFromOptionsNotScaledWithLuckDropRule myRule = null;
+
+				foreach (var drop in npcLoot.Get())
+				{
+					if (drop is LeadingConditionRule leadingRule &&
+						leadingRule.ChainedRules.Count > 0 &&
+						leadingRule.ChainedRules[0] is TryIfSucceeded t &&
+						t.RuleToChain is OneFromOptionsNotScaledWithLuckDropRule actualRule &&
+						actualRule._dropIds.Contains(matchID) &&
+						!actualRule._dropIds.Contains(itemToInsert))
+					{
+						myRule = actualRule;
+						break;
+					}
+				}
+
+				if (myRule != null)
+				{
+					var drops = myRule._dropIds.ToList();
+					drops.Add(itemToInsert);
+					myRule._dropIds = drops.ToArray();
+				}
+			}
+
 			//This method is called once when the game loads (per NPC), so you can't make dynamic checks based on world state like "npc.value > 0f" here
 			if (npc.type == NPCID.GoblinSorcerer)
 			{
