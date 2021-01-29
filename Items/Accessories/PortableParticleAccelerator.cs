@@ -1,4 +1,4 @@
-﻿using Terraria;
+using Terraria;
 using Terraria.ID;
 using Terraria.ModLoader;
 
@@ -14,11 +14,11 @@ namespace ClickerClass.Items.Accessories
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.accessory = true;
-			item.value = 45000;
-			item.rare = -1;
+			Item.width = 20;
+			Item.height = 20;
+			Item.accessory = true;
+			Item.value = 45000;
+			Item.rare = -1;
 		}
 
 		public override void UpdateAccessory(Player player, bool hideVisual)

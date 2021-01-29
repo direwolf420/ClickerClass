@@ -15,19 +15,19 @@ namespace ClickerClass.Items.Weapons.Clickers
 		public override void SetDefaults()
 		{
 			base.SetDefaults();
-			SetRadius(item, 2.75f);
-			SetColor(item, new Color(150, 100, 255, 0));
-			SetDust(item, 27);
-			SetAmount(item, 10);
-			SetEffect(item, "Shadow Lash");
+			SetRadius(Item, 2.75f);
+			SetColor(Item, new Color(150, 100, 255, 0));
+			SetDust(Item, 27);
+			SetAmount(Item, 10);
+			SetEffect(Item, "Shadow Lash");
 
 
-			item.damage = 20;
-			item.width = 30;
-			item.height = 30;
-			item.knockBack = 2f;
-			item.value = 200000;
-			item.rare = 3;
+			Item.damage = 20;
+			Item.width = 30;
+			Item.height = 30;
+			Item.knockBack = 2f;
+			Item.value = 200000;
+			Item.rare = 3;
 		}
 
 		/*

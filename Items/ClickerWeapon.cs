@@ -22,7 +22,7 @@ namespace ClickerClass.Items
 		/// </summary>
 		public override void SetDefaults()
 		{
-			ClickerSystem.SetClickerWeaponDefaults(item);
+			ClickerSystem.SetClickerWeaponDefaults(Item);
 		}
 
 		/// <summary>

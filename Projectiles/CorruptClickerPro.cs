@@ -8,16 +8,16 @@ namespace ClickerClass.Projectiles
 	{
 		public override void SetDefaults()
 		{
-			projectile.width = 250;
-			projectile.height = 250;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 10;
-			projectile.alpha = 255;
-			projectile.friendly = true;
-			projectile.tileCollide = false;
-			projectile.extraUpdates = 3;
-			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 30;
+			Projectile.width = 250;
+			Projectile.height = 250;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft = 10;
+			Projectile.alpha = 255;
+			Projectile.friendly = true;
+			Projectile.tileCollide = false;
+			Projectile.extraUpdates = 3;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 30;
 		}
 
 		public override void OnHitNPC(NPC target, int damage, float knockback, bool crit)

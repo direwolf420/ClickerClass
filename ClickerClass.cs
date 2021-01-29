@@ -1,13 +1,8 @@
 using ClickerClass.Effects;
-using ClickerClass.Items;
 using ClickerClass.Prefixes;
 using ClickerClass.UI;
-using Microsoft.Xna.Framework;
-using System;
-using System.Collections.Generic;
 using Terraria;
 using Terraria.ModLoader;
-using Terraria.UI;
 
 namespace ClickerClass
 {
@@ -51,36 +46,6 @@ namespace ClickerClass
 		{
 			ShaderManager.Load();
 			ClickerInterfaceResources.Load();
-		}
-
-		private GameTime _lastUpdateUIGameTime;
-
-		public override void UpdateUI(GameTime gameTime)
-		{
-			_lastUpdateUIGameTime = gameTime;
-			ClickerInterfaceResources.Update(gameTime);
-		}
-
-		public override void ModifyInterfaceLayers(List<GameInterfaceLayer> layers)
-		{
-			ClickerInterfaceResources.AddDrawLayers(layers);
-
-			//Remove Mouse Cursor
-			if (Main.cursorOverride == -1 && ClickerConfigClient.Instance.ShowCustomCursors)
-			{
-				Player player = Main.LocalPlayer;
-				if (ClickerCursor.CanDrawCursor(player.HeldItem))
-				{
-					for (int i = 0; i < layers.Count; i++)
-					{
-						if (layers[i].Name.Equals("Vanilla: Cursor"))
-						{
-							layers.RemoveAt(i);
-							break;
-						}
-					}
-				}
-			}
 		}
 
 		public override object Call(params object[] args)

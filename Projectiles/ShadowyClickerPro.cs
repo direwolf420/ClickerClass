@@ -11,22 +11,22 @@ namespace ClickerClass.Projectiles
 		public override void SetStaticDefaults()
 		{
 			base.SetStaticDefaults();
-			Main.projFrames[projectile.type] = 4;
-			ProjectileID.Sets.TrailCacheLength[projectile.type] = 5;
-			ProjectileID.Sets.TrailingMode[projectile.type] = 0;
+			Main.projFrames[Projectile.type] = 4;
+			ProjectileID.Sets.TrailCacheLength[Projectile.type] = 5;
+			ProjectileID.Sets.TrailingMode[Projectile.type] = 0;
 		}
 
 		public override void SetDefaults()
 		{
-			projectile.width = 22;
-			projectile.height = 22;
-			projectile.aiStyle = 1;
-			projectile.friendly = true;
-			projectile.penetrate = -1;
-			projectile.timeLeft = 180;
+			Projectile.width = 22;
+			Projectile.height = 22;
+			Projectile.aiStyle = 1;
+			Projectile.friendly = true;
+			Projectile.penetrate = -1;
+			Projectile.timeLeft = 180;
 			aiType = ProjectileID.Bullet;
-			projectile.usesLocalNPCImmunity = true;
-			projectile.localNPCHitCooldown = 180;
+			Projectile.usesLocalNPCImmunity = true;
+			Projectile.localNPCHitCooldown = 180;
 		}
 
 		public override Color? GetAlpha(Color lightColor)
@@ -37,16 +37,16 @@ namespace ClickerClass.Projectiles
 		public override bool PreDraw(SpriteBatch spriteBatch, Color lightColor)
 		{
 			Rectangle frame = new Rectangle(0, 0, 22, 28);
-			frame.Y += 28 * projectile.frame;
-			SpriteEffects effects = projectile.spriteDirection > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
+			frame.Y += 28 * Projectile.frame;
+			SpriteEffects effects = Projectile.spriteDirection > 0 ? SpriteEffects.None : SpriteEffects.FlipHorizontally;
 
-			var asset = TextureAssets.Projectile[projectile.type];
-			Vector2 drawOrigin = new Vector2(asset.Width() * 0.5f, projectile.height * 0.5f);
-			for (int k = 0; k < projectile.oldPos.Length; k++)
+			var asset = TextureAssets.Projectile[Projectile.type];
+			Vector2 drawOrigin = new Vector2(asset.Width() * 0.5f, Projectile.height * 0.5f);
+			for (int k = 0; k < Projectile.oldPos.Length; k++)
 			{
-				Vector2 drawPos = projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, projectile.gfxOffY);
-				Color color = projectile.GetAlpha(lightColor) * ((float)(projectile.oldPos.Length - k) / (float)projectile.oldPos.Length);
-				spriteBatch.Draw(asset.Value, drawPos, frame, new Color(255, 255, 255, 0) * 0.1f, projectile.rotation, drawOrigin, projectile.scale, effects, 0f);
+				Vector2 drawPos = Projectile.oldPos[k] - Main.screenPosition + drawOrigin + new Vector2(0f, Projectile.gfxOffY);
+				Color color = Projectile.GetAlpha(lightColor) * ((float)(Projectile.oldPos.Length - k) / (float)Projectile.oldPos.Length);
+				spriteBatch.Draw(asset.Value, drawPos, frame, new Color(255, 255, 255, 0) * 0.1f, Projectile.rotation, drawOrigin, Projectile.scale, effects, 0f);
 			}
 			return true;
 		}
@@ -58,13 +58,13 @@ namespace ClickerClass.Projectiles
 
 		public override void AI()
 		{
-			projectile.spriteDirection = projectile.velocity.X > 0f ? 1 : -1;
+			Projectile.spriteDirection = Projectile.velocity.X > 0f ? 1 : -1;
 
 			if (Main.rand.Next(3) == 0)
 			{
-				int DustID = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 27, 0f, 0f, 255, default(Color), 1f);
+				int DustID = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 27, 0f, 0f, 255, default(Color), 1f);
 				Main.dust[DustID].noGravity = true;
-				int DustID2 = Dust.NewDust(new Vector2(projectile.position.X, projectile.position.Y), projectile.width, projectile.height, 27, 0f, 0f, 150, default(Color), 0.75f);
+				int DustID2 = Dust.NewDust(new Vector2(Projectile.position.X, Projectile.position.Y), Projectile.width, Projectile.height, 27, 0f, 0f, 150, default(Color), 0.75f);
 				Main.dust[DustID2].noGravity = true;
 			}
 		}
@@ -73,17 +73,17 @@ namespace ClickerClass.Projectiles
 		{
 			for (int u = 0; u < 10; u++)
 			{
-				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 27, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), 255, default(Color), 1.25f);
+				int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 27, Main.rand.NextFloat(-2f, 2f), Main.rand.NextFloat(-2f, 2f), 255, default(Color), 1.25f);
 				Main.dust[dust].noGravity = true;
 			}
 
-			if (projectile.velocity.X != oldVelocity.X)
+			if (Projectile.velocity.X != oldVelocity.X)
 			{
-				projectile.velocity.X = -oldVelocity.X;
+				Projectile.velocity.X = -oldVelocity.X;
 			}
-			if (projectile.velocity.Y != oldVelocity.Y)
+			if (Projectile.velocity.Y != oldVelocity.Y)
 			{
-				projectile.velocity.Y = -oldVelocity.Y;
+				Projectile.velocity.Y = -oldVelocity.Y;
 			}
 			return false;
 		}
@@ -92,22 +92,22 @@ namespace ClickerClass.Projectiles
 		{
 			for (int u = 0; u < 15; u++)
 			{
-				int dust = Dust.NewDust(projectile.position, projectile.width, projectile.height, 27, Main.rand.NextFloat(-4f, 4f), Main.rand.NextFloat(-4f, 4f), 255, default(Color), 1.25f);
+				int dust = Dust.NewDust(Projectile.position, Projectile.width, Projectile.height, 27, Main.rand.NextFloat(-4f, 4f), Main.rand.NextFloat(-4f, 4f), 255, default(Color), 1.25f);
 				Main.dust[dust].noGravity = true;
 			}
 		}
 
 		public override void PostAI()
 		{
-			projectile.frameCounter++;
-			if (projectile.frameCounter > 4)
+			Projectile.frameCounter++;
+			if (Projectile.frameCounter > 4)
 			{
-				projectile.frame++;
-				projectile.frameCounter = 0;
+				Projectile.frame++;
+				Projectile.frameCounter = 0;
 			}
-			if (projectile.frame >= 4)
+			if (Projectile.frame >= 4)
 			{
-				projectile.frame = 0;
+				Projectile.frame = 0;
 				return;
 			}
 		}

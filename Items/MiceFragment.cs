@@ -11,17 +11,17 @@ namespace ClickerClass.Items
 			base.SetStaticDefaults();
 			DisplayName.SetDefault("Mice Fragment");
 			Tooltip.SetDefault("'Erratic sparks skitter across this fragment'");
-			ItemID.Sets.ItemIconPulse[item.type] = true;
-			ItemID.Sets.ItemNoGravity[item.type] = true;
+			ItemID.Sets.ItemIconPulse[Item.type] = true;
+			ItemID.Sets.ItemNoGravity[Item.type] = true;
 		}
 
 		public override void SetDefaults()
 		{
-			item.width = 20;
-			item.height = 20;
-			item.maxStack = 999;
-			item.value = Item.sellPrice(0, 0, 20, 0);
-			item.rare = 9;
+			Item.width = 20;
+			Item.height = 20;
+			Item.maxStack = 999;
+			Item.value = Item.sellPrice(0, 0, 20, 0);
+			Item.rare = 9;
 		}
 
 		public override Color? GetAlpha(Color lightColor)

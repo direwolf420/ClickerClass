@@ -1,4 +1,4 @@
-﻿using ClickerClass.Items;
+using ClickerClass.Items;
 using ClickerClass.Projectiles;
 using System;
 using System.Collections.Generic;
@@ -60,7 +60,7 @@ namespace ClickerClass
 			{
 				throw new Exception("Tried to register a clicker projectile at the wrong time, do so in ModProjectile.SetStaticDefaults");
 			}
-			int type = modProj.projectile.type;
+			int type = modProj.Projectile.type;
 			if (!ClickerProjectiles.Contains(type))
 			{
 				ClickerProjectiles.Add(type);
@@ -77,7 +77,7 @@ namespace ClickerClass
 			{
 				throw new Exception("Tried to register a clicker item at the wrong time, do so in ModItem.SetStaticDefaults");
 			}
-			int type = modItem.item.type;
+			int type = modItem.Item.type;
 			if (!ClickerItems.Contains(type))
 			{
 				ClickerItems.Add(type);
@@ -97,7 +97,7 @@ namespace ClickerClass
 				throw new Exception("Tried to register a clicker weapon at the wrong time, do so in ModItem.SetStaticDefaults");
 			}
 			RegisterClickerItem(modItem);
-			int type = modItem.item.type;
+			int type = modItem.Item.type;
 			if (!ClickerWeapons.Contains(type))
 			{
 				ClickerWeapons.Add(type);

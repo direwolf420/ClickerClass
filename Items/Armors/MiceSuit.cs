@@ -17,11 +17,11 @@ namespace ClickerClass.Items.Armors
 
 		public override void SetDefaults()
 		{
-			item.width = 18;
-			item.height = 18;
-			item.value = 140000;
-			item.rare = 10;
-			item.defense = 28;
+			Item.width = 18;
+			Item.height = 18;
+			Item.value = 140000;
+			Item.rare = 10;
+			Item.defense = 28;
 		}
 
 		public override void UpdateEquip(Player player)
