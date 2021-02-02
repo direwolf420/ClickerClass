@@ -158,7 +158,7 @@ namespace ClickerClass.Items
 			{
 				ClickerPlayer clickerPlayer = player.GetModPlayer<ClickerPlayer>();
 				flat += clickerPlayer.clickerDamageFlat;
-				damage.multiplicative *= clickerPlayer.clickerDamage;
+				damage *= clickerPlayer.clickerDamage;
 			}
 		}
 
