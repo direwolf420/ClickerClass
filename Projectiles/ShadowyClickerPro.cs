@@ -24,7 +24,7 @@ namespace ClickerClass.Projectiles
 			Projectile.friendly = true;
 			Projectile.penetrate = -1;
 			Projectile.timeLeft = 180;
-			aiType = ProjectileID.Bullet;
+			AIType = ProjectileID.Bullet;
 			Projectile.usesLocalNPCImmunity = true;
 			Projectile.localNPCHitCooldown = 180;
 		}
